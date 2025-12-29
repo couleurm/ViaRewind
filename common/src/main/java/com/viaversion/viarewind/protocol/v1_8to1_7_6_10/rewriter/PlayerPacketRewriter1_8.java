@@ -590,6 +590,7 @@ public class PlayerPacketRewriter1_8 extends RewriterBase<Protocol1_8To1_7_6_10>
             protected void register() {
                 map(Types.VAR_INT); // Status
                 map(RewindTypes.U_BYTE_POSITION, Types.BLOCK_POSITION1_8); // Position
+                map(Types.BYTE, Types.UNSIGNED_BYTE, face -> face == -1 ? (short) 0 : (short) (face & 0xFF)); // "fixes" item usage for 1.7 clients on minestom, no clue what if it even fixes it properly
             }
         });
 
